@@ -1,0 +1,60 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+}
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.security:spring-security-bom:5.7.3'
+    }
+}
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'mysql:mysql-connector-java:8.0.30'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //testImplementation 'org.springframework.security:spring-security-test'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+
+//    // https://mavenlibs.com/maven/dependency/org.springframework.security/spring-security-web
+//    implementation 'org.springframework.security:spring-security-web:5.7.3'
+//
+//    // https://mavenlibs.com/maven/dependency/javax.servlet/javax.servlet-api
+//    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+//
+//    // https://mavenlibs.com/maven/dependency/javax.servlet.jsp/javax.servlet.jsp-api
+//    implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+//
+//    // https://mavenlibs.com/maven/dependency/javax.servlet/jstl
+//    implementation 'javax.servlet:jstl:1.2'
+
+// https://mavenlibs.com/maven/dependency/mysql/mysql-connec
+// tor-java
